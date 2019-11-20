@@ -82,15 +82,15 @@ def attachLayerDependingUponNode(G, order):
 	return G
 
 
-G = getFullArch(3, 300)
-plotDirected(G)
+# G = getFullArch(3, 300)
+# plotDirected(G)
 
-graphOrder = list(topsort(G))
-# The order is by design is such that all 'a' component come first then 'b' so on
+# graphOrder = list(topsort(G))
+# # The order is by design is such that all 'a' component come first then 'b' so on
 
-G = attachLayerDependingUponNode(G,graphOrder)
+# G = attachLayerDependingUponNode(G,graphOrder)
 
-print G.nodes.data()
+# print G.nodes.data()
 
 
 class Net(nn.Module):
@@ -100,7 +100,7 @@ class Net(nn.Module):
         self.graphOrder = list(topsort(G)) #save time in topsorting everytime when required, use this <-DO NOT CHANGE THIS ORDER!!! as nodeInNN is orderdependent
         self.nodesInNN = nn.ModuleList()
 
-        for nod in graphOrder :
+        for nod in self.graphOrder :
         	# print nod
         	self.nodesInNN.append(G.node[nod]['layer'])
 
@@ -114,7 +114,7 @@ class Net(nn.Module):
     		# find pred and get results from pred 
     		# then add those pred 
     		# then supply in the curr node
-    		pred = list(G.predecessors(node))
+    		pred = list(self.G.predecessors(node))
     		if len(pred) == 0 : # when node == 'In'
     			result[node] = self.nodesInNN[ix](x)
     		else : 
@@ -131,11 +131,19 @@ class Net(nn.Module):
         return output
 
 
-x = torch.zeros((1,1,28,28))
-model = Net(G)
-print model(x).shape
+def testMNIST(Net,G):
+	x = torch.zeros((1,1,28,28))
+	model = Net(G)
+	print model(x).shape
 
-runNetwork(model)
+
+
+# nx.readwrite.nx_yaml.write_yaml(G,"model.yaml")
+# runNetwork(model)
+
+
+
+
 
 # nnModelDict = attachLayerDependingUponNode(G, graphOrder)
 # making graphOrder as list rather than the generator object is the only useful thing I could find to do with topsort

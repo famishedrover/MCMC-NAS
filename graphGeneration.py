@@ -23,7 +23,7 @@ MCMC Chain  :
 import networkx as nx
 from graphPlot import plotUndirected, plotDirected
 
-from util import convertToDAG, combineGraphs, convertGraphToPytorchNetwork
+from util import convertToDAG, combineGraphs
 
 failedAttemptsSwap = 0
 totalAttemptsSwap = 0

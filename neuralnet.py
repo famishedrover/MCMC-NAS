@@ -17,8 +17,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
-
-
+import torchvision 
 
 
 class convunits(nn.Module):
@@ -71,23 +70,28 @@ class unit(nn.Module):
 # This has been modified just a tad bit to fit the entire code base 
 # The code below is kind of a bootstrap pytorch code for NN training / data loading / NN testing
 # The actual code required cmd args, but I have changed all that among other things...
-def train(model, device, train_loader, optimizer, epoch):
+# and support for tensorboard has been added
+def train(model,tb, device, train_loader, optimizer, epoch):
     model.train()
+    total_loss = 0
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
         # print (data.size())
         optimizer.zero_grad()
         output = model(data)
         loss = F.nll_loss(output, target)
+        total_loss += loss.item()
         loss.backward()
         optimizer.step()
         if batch_idx % 2 == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                 epoch, batch_idx * len(data), len(train_loader.dataset),
                 100. * batch_idx / len(train_loader), loss.item()))
+    total_loss /= len(train_loader.dataset)
 
+    tb.add_scalar('Train Loss',total_loss,epoch)
 
-def test(model, device, test_loader):
+def test(model,tb, device, test_loader, epoch):
     model.eval()
     test_loss = 0
     correct = 0
@@ -105,21 +109,19 @@ def test(model, device, test_loader):
         test_loss, correct, len(test_loader.dataset),
         100. * correct / len(test_loader.dataset)))
 
+    tb.add_scalar('Test Loss',test_loss,epoch)
+    tb.add_scalar('Test Accuracy',100. * correct / len(test_loader.dataset),epoch)
 
-def runNetwork(Net):
-    epochs = 10
-    batch_size = 256
-    test_batch_size = 256 
-    lr = 0.1
-    gamma = 0.7
+
+def runNetwork(Net,tb,epochs = 10, batch_size = 256, test_batch_size = 256, lr = 0.1, gamma = 0.7, seed=314):
 
     use_cuda = torch.cuda.is_available()
-
-    torch.manual_seed(314)
-
+    torch.manual_seed(seed)
     device = torch.device("cuda" if use_cuda else "cpu")
-
     kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {}
+
+
+
     train_loader = torch.utils.data.DataLoader(
         datasets.MNIST('../data', train=True, download=True,
                        transform=transforms.Compose([
@@ -135,16 +137,26 @@ def runNetwork(Net):
         batch_size=test_batch_size, shuffle=True, **kwargs)
 
     # model = Net().to(device)
-    model = Net
+    images,labels = next(iter(train_loader))
+    grid = torchvision.utils.make_grid(images[:16])
+
+    model = Net.to(device)
+
+    # adding tensorboard image grid and other bookkeping 
+    tb.add_image('images',grid)
+    tb.add_graph(model,images)
+
+
+
     optimizer = optim.Adadelta(model.parameters(), lr=lr)
 
     scheduler = StepLR(optimizer, step_size=1, gamma=gamma)
     for epoch in range(1, epochs + 1):
-        train(model, device, train_loader, optimizer, epoch)
-        test(model, device, test_loader)
+        train(model,tb, device, train_loader, optimizer, epoch)
+        test(model,tb, device, test_loader, epoch)
         scheduler.step()
 
         # save at each epoch
-        torch.save(model.state_dict(), "mnist_cnn.pt")
+        torch.save(model, tb.log_dir+"/model/mnist_"+str(ep)+".pt")
 
 # runNetwork(Net)
