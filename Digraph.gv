@@ -1,0 +1,605 @@
+digraph {
+	graph [size="70.65,70.65"]
+	node [align=left fontsize=12 height=0.2 ranksep=0.1 shape=box style=filled]
+		5460999888 [label=LogSoftmaxBackward fillcolor=darkolivegreen1]
+			5460999376 -> 5460999888
+		5460999376 [label=AddmmBackward]
+			5461507344 -> 5460999376
+		5461507344 [label="fc.bias
+ (10)" fillcolor=lightblue]
+			5461507408 -> 5460999376
+		5461507408 [label=AsStridedBackward]
+			5461507792 -> 5461507408
+		5461507792 [label=NativeBatchNormBackward]
+			5461507920 -> 5461507792
+		5461507920 [label=MkldnnConvolutionBackward]
+			5461520592 -> 5461507920
+		5461520592 [label=MkldnnConvolutionBackward]
+			5461520912 -> 5461520592
+		5461520912 [label=ReluBackward0]
+			5461521232 -> 5461520912
+		5461521232 [label=AddBackward0]
+			5461521424 -> 5461521232
+		5461521424 [label=AddBackward0]
+			5461521680 -> 5461521424
+		5461521680 [label=AddBackward0]
+			5461521936 -> 5461521680
+		5461521936 [label=NativeBatchNormBackward]
+			5461522192 -> 5461521936
+		5461522192 [label=MkldnnConvolutionBackward]
+			5461522512 -> 5461522192
+		5461522512 [label=MkldnnConvolutionBackward]
+			5461522832 -> 5461522512
+		5461522832 [label=ReluBackward0]
+			5461523152 -> 5461522832
+		5461523152 [label=AddBackward0]
+			5461523344 -> 5461523152
+		5461523344 [label=AddBackward0]
+			5461523600 -> 5461523344
+		5461523600 [label=NativeBatchNormBackward]
+			5461523856 -> 5461523600
+		5461523856 [label=MkldnnConvolutionBackward]
+			5461524176 -> 5461523856
+		5461524176 [label=MkldnnConvolutionBackward]
+			5461524560 -> 5461524176
+		5461524560 [label=ReluBackward0]
+			5461524880 -> 5461524560
+		5461524880 [label=MaxPool2DWithIndicesBackward]
+			5461525072 -> 5461524880
+		5461525072 [label=MkldnnConvolutionBackward]
+			5461525264 -> 5461525072
+		5461525264 [label=MkldnnConvolutionBackward]
+			5461525584 -> 5461525264
+		5461525584 [label=ReluBackward0]
+			5461525904 -> 5461525584
+		5461525904 [label=AddBackward0]
+			5461526096 -> 5461525904
+		5461526096 [label=AddBackward0]
+			5461526352 -> 5461526096
+		5461526352 [label=NativeBatchNormBackward]
+			5461526608 -> 5461526352
+		5461526608 [label=MkldnnConvolutionBackward]
+			5461526928 -> 5461526608
+		5461526928 [label=MkldnnConvolutionBackward]
+			5461527248 -> 5461526928
+		5461527248 [label=ReluBackward0]
+			5461527568 -> 5461527248
+		5461527568 [label=NativeBatchNormBackward]
+			5461527760 -> 5461527568
+		5461527760 [label=MkldnnConvolutionBackward]
+			5461528080 -> 5461527760
+		5461528080 [label=MkldnnConvolutionBackward]
+			5461528400 -> 5461528080
+		5461528400 [label=ReluBackward0]
+			5461532880 -> 5461528400
+		5461532880 [label=MaxPool2DWithIndicesBackward]
+			5461533072 -> 5461532880
+		5461533072 [label=MkldnnConvolutionBackward]
+			5461533264 -> 5461533072
+		5461533264 [label=MkldnnConvolutionBackward]
+			5461533584 -> 5461533264
+		5461533584 [label=ReluBackward0]
+			5461533904 -> 5461533584
+		5461533904 [label=AddBackward0]
+			5461534096 -> 5461533904
+		5461534096 [label=NativeBatchNormBackward]
+			5461534352 -> 5461534096
+		5461534352 [label=MkldnnConvolutionBackward]
+			5461534672 -> 5461534352
+		5461534672 [label=MkldnnConvolutionBackward]
+			5461534992 -> 5461534672
+		5461534992 [label=ReluBackward0]
+			5461535312 -> 5461534992
+		5461535312 [label=NativeBatchNormBackward]
+			5461535504 -> 5461535312
+		5461535504 [label=MkldnnConvolutionBackward]
+			5461535824 -> 5461535504
+		5461535824 [label=MkldnnConvolutionBackward]
+			5461536144 -> 5461535824
+		5461536144 [label=ReluBackward0]
+			5461536464 -> 5461536144
+		5461536464 [label=NativeBatchNormBackward]
+			5461536656 -> 5461536464
+		5461536656 [label=MkldnnConvolutionBackward]
+			5461537040 -> 5461536656
+		5461537040 [label=MkldnnConvolutionBackward]
+			5461537360 -> 5461537040
+		5461537360 [label="nodesInNN.0.conv.depth.weight
+ (1, 1, 3, 3)" fillcolor=lightblue]
+			5461537424 -> 5461537040
+		5461537424 [label="nodesInNN.0.conv.depth.bias
+ (1)" fillcolor=lightblue]
+			5461537104 -> 5461536656
+		5461537104 [label="nodesInNN.0.conv.point.weight
+ (8, 1, 1, 1)" fillcolor=lightblue]
+			5461537168 -> 5461536656
+		5461537168 [label="nodesInNN.0.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461536720 -> 5461536464
+		5461536720 [label="nodesInNN.0.bn.weight
+ (8)" fillcolor=lightblue]
+			5461536848 -> 5461536464
+		5461536848 [label="nodesInNN.0.bn.bias
+ (8)" fillcolor=lightblue]
+			5461536208 -> 5461535824
+		5461536208 [label="nodesInNN.1.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461536272 -> 5461535824
+		5461536272 [label="nodesInNN.1.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461535888 -> 5461535504
+		5461535888 [label="nodesInNN.1.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461535952 -> 5461535504
+		5461535952 [label="nodesInNN.1.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461535568 -> 5461535312
+		5461535568 [label="nodesInNN.1.bn.weight
+ (8)" fillcolor=lightblue]
+			5461535632 -> 5461535312
+		5461535632 [label="nodesInNN.1.bn.bias
+ (8)" fillcolor=lightblue]
+			5461535056 -> 5461534672
+		5461535056 [label="nodesInNN.3.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461535120 -> 5461534672
+		5461535120 [label="nodesInNN.3.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461534736 -> 5461534352
+		5461534736 [label="nodesInNN.3.conv.point.weight
+ (16, 8, 1, 1)" fillcolor=lightblue]
+			5461534800 -> 5461534352
+		5461534800 [label="nodesInNN.3.conv.point.bias
+ (16)" fillcolor=lightblue]
+			5461534416 -> 5461534096
+		5461534416 [label="nodesInNN.3.bn.weight
+ (16)" fillcolor=lightblue]
+			5461534480 -> 5461534096
+		5461534480 [label="nodesInNN.3.bn.bias
+ (16)" fillcolor=lightblue]
+			5461534160 -> 5461533904
+		5461534160 [label=NativeBatchNormBackward]
+			5461538064 -> 5461534160
+		5461538064 [label=MkldnnConvolutionBackward]
+			5461538384 -> 5461538064
+		5461538384 [label=MkldnnConvolutionBackward]
+			5461538704 -> 5461538384
+		5461538704 [label=ReluBackward0]
+			5461535312 -> 5461538704
+			5461538768 -> 5461538384
+		5461538768 [label="nodesInNN.2.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461538832 -> 5461538384
+		5461538832 [label="nodesInNN.2.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461538448 -> 5461538064
+		5461538448 [label="nodesInNN.2.conv.point.weight
+ (16, 8, 1, 1)" fillcolor=lightblue]
+			5461538512 -> 5461538064
+		5461538512 [label="nodesInNN.2.conv.point.bias
+ (16)" fillcolor=lightblue]
+			5461538128 -> 5461534160
+		5461538128 [label="nodesInNN.2.bn.weight
+ (16)" fillcolor=lightblue]
+			5461538192 -> 5461534160
+		5461538192 [label="nodesInNN.2.bn.bias
+ (16)" fillcolor=lightblue]
+			5461533648 -> 5461533264
+		5461533648 [label="nodesInNN.4.conv.depth.weight
+ (16, 1, 3, 3)" fillcolor=lightblue]
+			5461533712 -> 5461533264
+		5461533712 [label="nodesInNN.4.conv.depth.bias
+ (16)" fillcolor=lightblue]
+			5461533328 -> 5461533072
+		5461533328 [label="nodesInNN.4.conv.point.weight
+ (16, 16, 1, 1)" fillcolor=lightblue]
+			5461533392 -> 5461533072
+		5461533392 [label="nodesInNN.4.conv.point.bias
+ (16)" fillcolor=lightblue]
+			5461528464 -> 5461528080
+		5461528464 [label="nodesInNN.5.conv.depth.weight
+ (16, 1, 3, 3)" fillcolor=lightblue]
+			5461528528 -> 5461528080
+		5461528528 [label="nodesInNN.5.conv.depth.bias
+ (16)" fillcolor=lightblue]
+			5461528144 -> 5461527760
+		5461528144 [label="nodesInNN.5.conv.point.weight
+ (32, 16, 1, 1)" fillcolor=lightblue]
+			5461528208 -> 5461527760
+		5461528208 [label="nodesInNN.5.conv.point.bias
+ (32)" fillcolor=lightblue]
+			5461527824 -> 5461527568
+		5461527824 [label="nodesInNN.5.bn.weight
+ (32)" fillcolor=lightblue]
+			5461527888 -> 5461527568
+		5461527888 [label="nodesInNN.5.bn.bias
+ (32)" fillcolor=lightblue]
+			5461527312 -> 5461526928
+		5461527312 [label="nodesInNN.6.conv.depth.weight
+ (32, 1, 3, 3)" fillcolor=lightblue]
+			5461527376 -> 5461526928
+		5461527376 [label="nodesInNN.6.conv.depth.bias
+ (32)" fillcolor=lightblue]
+			5461526992 -> 5461526608
+		5461526992 [label="nodesInNN.6.conv.point.weight
+ (16, 32, 1, 1)" fillcolor=lightblue]
+			5461527056 -> 5461526608
+		5461527056 [label="nodesInNN.6.conv.point.bias
+ (16)" fillcolor=lightblue]
+			5461526672 -> 5461526352
+		5461526672 [label="nodesInNN.6.bn.weight
+ (16)" fillcolor=lightblue]
+			5461526736 -> 5461526352
+		5461526736 [label="nodesInNN.6.bn.bias
+ (16)" fillcolor=lightblue]
+			5461526416 -> 5461526096
+		5461526416 [label=NativeBatchNormBackward]
+			5461539536 -> 5461526416
+		5461539536 [label=MkldnnConvolutionBackward]
+			5461539856 -> 5461539536
+		5461539856 [label=MkldnnConvolutionBackward]
+			5461540176 -> 5461539856
+		5461540176 [label=ReluBackward0]
+			5461540496 -> 5461540176
+		5461540496 [label=NativeBatchNormBackward]
+			5461540688 -> 5461540496
+		5461540688 [label=MkldnnConvolutionBackward]
+			5461549264 -> 5461540688
+		5461549264 [label=MkldnnConvolutionBackward]
+			5461549584 -> 5461549264
+		5461549584 [label=ReluBackward0]
+			5461549904 -> 5461549584
+		5461549904 [label=NativeBatchNormBackward]
+			5461550096 -> 5461549904
+		5461550096 [label=MkldnnConvolutionBackward]
+			5461550416 -> 5461550096
+		5461550416 [label=MkldnnConvolutionBackward]
+			5461550736 -> 5461550416
+		5461550736 [label=ReluBackward0]
+			5461532880 -> 5461550736
+			5461550800 -> 5461550416
+		5461550800 [label="nodesInNN.7.conv.depth.weight
+ (16, 1, 3, 3)" fillcolor=lightblue]
+			5461550864 -> 5461550416
+		5461550864 [label="nodesInNN.7.conv.depth.bias
+ (16)" fillcolor=lightblue]
+			5461550480 -> 5461550096
+		5461550480 [label="nodesInNN.7.conv.point.weight
+ (32, 16, 1, 1)" fillcolor=lightblue]
+			5461550544 -> 5461550096
+		5461550544 [label="nodesInNN.7.conv.point.bias
+ (32)" fillcolor=lightblue]
+			5461550160 -> 5461549904
+		5461550160 [label="nodesInNN.7.bn.weight
+ (32)" fillcolor=lightblue]
+			5461550224 -> 5461549904
+		5461550224 [label="nodesInNN.7.bn.bias
+ (32)" fillcolor=lightblue]
+			5461549648 -> 5461549264
+		5461549648 [label="nodesInNN.9.conv.depth.weight
+ (32, 1, 3, 3)" fillcolor=lightblue]
+			5461549712 -> 5461549264
+		5461549712 [label="nodesInNN.9.conv.depth.bias
+ (32)" fillcolor=lightblue]
+			5461549328 -> 5461540688
+		5461549328 [label="nodesInNN.9.conv.point.weight
+ (32, 32, 1, 1)" fillcolor=lightblue]
+			5461549392 -> 5461540688
+		5461549392 [label="nodesInNN.9.conv.point.bias
+ (32)" fillcolor=lightblue]
+			5461540752 -> 5461540496
+		5461540752 [label="nodesInNN.9.bn.weight
+ (32)" fillcolor=lightblue]
+			5461540816 -> 5461540496
+		5461540816 [label="nodesInNN.9.bn.bias
+ (32)" fillcolor=lightblue]
+			5461540240 -> 5461539856
+		5461540240 [label="nodesInNN.10.conv.depth.weight
+ (32, 1, 3, 3)" fillcolor=lightblue]
+			5461540304 -> 5461539856
+		5461540304 [label="nodesInNN.10.conv.depth.bias
+ (32)" fillcolor=lightblue]
+			5461539920 -> 5461539536
+		5461539920 [label="nodesInNN.10.conv.point.weight
+ (16, 32, 1, 1)" fillcolor=lightblue]
+			5461539984 -> 5461539536
+		5461539984 [label="nodesInNN.10.conv.point.bias
+ (16)" fillcolor=lightblue]
+			5461539600 -> 5461526416
+		5461539600 [label="nodesInNN.10.bn.weight
+ (16)" fillcolor=lightblue]
+			5461539664 -> 5461526416
+		5461539664 [label="nodesInNN.10.bn.bias
+ (16)" fillcolor=lightblue]
+			5461526160 -> 5461525904
+		5461526160 [label=NativeBatchNormBackward]
+			5461539728 -> 5461526160
+		5461539728 [label=MkldnnConvolutionBackward]
+			5461551888 -> 5461539728
+		5461551888 [label=MkldnnConvolutionBackward]
+			5461552208 -> 5461551888
+		5461552208 [label=ReluBackward0]
+			5461549904 -> 5461552208
+			5461552272 -> 5461551888
+		5461552272 [label="nodesInNN.8.conv.depth.weight
+ (32, 1, 3, 3)" fillcolor=lightblue]
+			5461552336 -> 5461551888
+		5461552336 [label="nodesInNN.8.conv.depth.bias
+ (32)" fillcolor=lightblue]
+			5461551952 -> 5461539728
+		5461551952 [label="nodesInNN.8.conv.point.weight
+ (16, 32, 1, 1)" fillcolor=lightblue]
+			5461552016 -> 5461539728
+		5461552016 [label="nodesInNN.8.conv.point.bias
+ (16)" fillcolor=lightblue]
+			5461551632 -> 5461526160
+		5461551632 [label="nodesInNN.8.bn.weight
+ (16)" fillcolor=lightblue]
+			5461551696 -> 5461526160
+		5461551696 [label="nodesInNN.8.bn.bias
+ (16)" fillcolor=lightblue]
+			5461525648 -> 5461525264
+		5461525648 [label="nodesInNN.11.conv.depth.weight
+ (16, 1, 3, 3)" fillcolor=lightblue]
+			5461525712 -> 5461525264
+		5461525712 [label="nodesInNN.11.conv.depth.bias
+ (16)" fillcolor=lightblue]
+			5461525328 -> 5461525072
+		5461525328 [label="nodesInNN.11.conv.point.weight
+ (8, 16, 1, 1)" fillcolor=lightblue]
+			5461525392 -> 5461525072
+		5461525392 [label="nodesInNN.11.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461524624 -> 5461524176
+		5461524624 [label="nodesInNN.18.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461524688 -> 5461524176
+		5461524688 [label="nodesInNN.18.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461524240 -> 5461523856
+		5461524240 [label="nodesInNN.18.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461524304 -> 5461523856
+		5461524304 [label="nodesInNN.18.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461523920 -> 5461523600
+		5461523920 [label="nodesInNN.18.bn.weight
+ (8)" fillcolor=lightblue]
+			5461523984 -> 5461523600
+		5461523984 [label="nodesInNN.18.bn.bias
+ (8)" fillcolor=lightblue]
+			5461523664 -> 5461523344
+		5461523664 [label=NativeBatchNormBackward]
+			5461552912 -> 5461523664
+		5461552912 [label=MkldnnConvolutionBackward]
+			5461557392 -> 5461552912
+		5461557392 [label=MkldnnConvolutionBackward]
+			5461557712 -> 5461557392
+		5461557712 [label=ReluBackward0]
+			5461524880 -> 5461557712
+			5461557776 -> 5461557392
+		5461557776 [label="nodesInNN.15.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461557840 -> 5461557392
+		5461557840 [label="nodesInNN.15.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461557456 -> 5461552912
+		5461557456 [label="nodesInNN.15.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461557520 -> 5461552912
+		5461557520 [label="nodesInNN.15.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461552976 -> 5461523664
+		5461552976 [label="nodesInNN.15.bn.weight
+ (8)" fillcolor=lightblue]
+			5461553040 -> 5461523664
+		5461553040 [label="nodesInNN.15.bn.bias
+ (8)" fillcolor=lightblue]
+			5461523408 -> 5461523152
+		5461523408 [label=NativeBatchNormBackward]
+			5461553104 -> 5461523408
+		5461553104 [label=MkldnnConvolutionBackward]
+			5461558608 -> 5461553104
+		5461558608 [label=MkldnnConvolutionBackward]
+			5461558928 -> 5461558608
+		5461558928 [label=ReluBackward0]
+			5461524880 -> 5461558928
+			5461558992 -> 5461558608
+		5461558992 [label="nodesInNN.12.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461559056 -> 5461558608
+		5461559056 [label="nodesInNN.12.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461558672 -> 5461553104
+		5461558672 [label="nodesInNN.12.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461558736 -> 5461553104
+		5461558736 [label="nodesInNN.12.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461558352 -> 5461523408
+		5461558352 [label="nodesInNN.12.bn.weight
+ (8)" fillcolor=lightblue]
+			5461558416 -> 5461523408
+		5461558416 [label="nodesInNN.12.bn.bias
+ (8)" fillcolor=lightblue]
+			5461522896 -> 5461522512
+		5461522896 [label="nodesInNN.20.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461522960 -> 5461522512
+		5461522960 [label="nodesInNN.20.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461522576 -> 5461522192
+		5461522576 [label="nodesInNN.20.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461522640 -> 5461522192
+		5461522640 [label="nodesInNN.20.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461522256 -> 5461521936
+		5461522256 [label="nodesInNN.20.bn.weight
+ (8)" fillcolor=lightblue]
+			5461522320 -> 5461521936
+		5461522320 [label="nodesInNN.20.bn.bias
+ (8)" fillcolor=lightblue]
+			5461522000 -> 5461521680
+		5461522000 [label=NativeBatchNormBackward]
+			5461559632 -> 5461522000
+		5461559632 [label=MkldnnConvolutionBackward]
+			5461559952 -> 5461559632
+		5461559952 [label=MkldnnConvolutionBackward]
+			5461560272 -> 5461559952
+		5461560272 [label=ReluBackward0]
+			5461560592 -> 5461560272
+		5461560592 [label=AddBackward0]
+			5461523600 -> 5461560592
+			5461523408 -> 5461560592
+			5461560336 -> 5461559952
+		5461560336 [label="nodesInNN.19.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461560400 -> 5461559952
+		5461560400 [label="nodesInNN.19.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461560016 -> 5461559632
+		5461560016 [label="nodesInNN.19.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461560080 -> 5461559632
+		5461560080 [label="nodesInNN.19.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461559696 -> 5461522000
+		5461559696 [label="nodesInNN.19.bn.weight
+ (8)" fillcolor=lightblue]
+			5461559760 -> 5461522000
+		5461559760 [label="nodesInNN.19.bn.bias
+ (8)" fillcolor=lightblue]
+			5461521744 -> 5461521424
+		5461521744 [label=NativeBatchNormBackward]
+			5461559824 -> 5461521744
+		5461559824 [label=MkldnnConvolutionBackward]
+			5461569616 -> 5461559824
+		5461569616 [label=MkldnnConvolutionBackward]
+			5461569936 -> 5461569616
+		5461569936 [label=ReluBackward0]
+			5461570256 -> 5461569936
+		5461570256 [label=NativeBatchNormBackward]
+			5461570448 -> 5461570256
+		5461570448 [label=MkldnnConvolutionBackward]
+			5461570768 -> 5461570448
+		5461570768 [label=MkldnnConvolutionBackward]
+			5461571088 -> 5461570768
+		5461571088 [label=ReluBackward0]
+			5461524880 -> 5461571088
+			5461571152 -> 5461570768
+		5461571152 [label="nodesInNN.16.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461571216 -> 5461570768
+		5461571216 [label="nodesInNN.16.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461570832 -> 5461570448
+		5461570832 [label="nodesInNN.16.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461570896 -> 5461570448
+		5461570896 [label="nodesInNN.16.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461570512 -> 5461570256
+		5461570512 [label="nodesInNN.16.bn.weight
+ (8)" fillcolor=lightblue]
+			5461570576 -> 5461570256
+		5461570576 [label="nodesInNN.16.bn.bias
+ (8)" fillcolor=lightblue]
+			5461570000 -> 5461569616
+		5461570000 [label="nodesInNN.17.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461570064 -> 5461569616
+		5461570064 [label="nodesInNN.17.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461569680 -> 5461559824
+		5461569680 [label="nodesInNN.17.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461569744 -> 5461559824
+		5461569744 [label="nodesInNN.17.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461561104 -> 5461521744
+		5461561104 [label="nodesInNN.17.bn.weight
+ (8)" fillcolor=lightblue]
+			5461561168 -> 5461521744
+		5461561168 [label="nodesInNN.17.bn.bias
+ (8)" fillcolor=lightblue]
+			5461521488 -> 5461521232
+		5461521488 [label=NativeBatchNormBackward]
+			5461561232 -> 5461521488
+		5461561232 [label=MkldnnConvolutionBackward]
+			5461572112 -> 5461561232
+		5461572112 [label=MkldnnConvolutionBackward]
+			5461572432 -> 5461572112
+		5461572432 [label=ReluBackward0]
+			5461572752 -> 5461572432
+		5461572752 [label=AddBackward0]
+			5461572944 -> 5461572752
+		5461572944 [label=NativeBatchNormBackward]
+			5461573136 -> 5461572944
+		5461573136 [label=MkldnnConvolutionBackward]
+			5461573456 -> 5461573136
+		5461573456 [label=MkldnnConvolutionBackward]
+			5461573840 -> 5461573456
+		5461573840 [label=ReluBackward0]
+			5461524880 -> 5461573840
+			5461573904 -> 5461573456
+		5461573904 [label="nodesInNN.13.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461573968 -> 5461573456
+		5461573968 [label="nodesInNN.13.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461573520 -> 5461573136
+		5461573520 [label="nodesInNN.13.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461573584 -> 5461573136
+		5461573584 [label="nodesInNN.13.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461573200 -> 5461572944
+		5461573200 [label="nodesInNN.13.bn.weight
+ (8)" fillcolor=lightblue]
+			5461573264 -> 5461572944
+		5461573264 [label="nodesInNN.13.bn.bias
+ (8)" fillcolor=lightblue]
+			5461523408 -> 5461572752
+			5461572496 -> 5461572112
+		5461572496 [label="nodesInNN.14.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461572560 -> 5461572112
+		5461572560 [label="nodesInNN.14.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461572176 -> 5461561232
+		5461572176 [label="nodesInNN.14.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461572240 -> 5461561232
+		5461572240 [label="nodesInNN.14.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461571856 -> 5461521488
+		5461571856 [label="nodesInNN.14.bn.weight
+ (8)" fillcolor=lightblue]
+			5461571920 -> 5461521488
+		5461571920 [label="nodesInNN.14.bn.bias
+ (8)" fillcolor=lightblue]
+			5461520976 -> 5461520592
+		5461520976 [label="nodesInNN.21.conv.depth.weight
+ (8, 1, 3, 3)" fillcolor=lightblue]
+			5461521040 -> 5461520592
+		5461521040 [label="nodesInNN.21.conv.depth.bias
+ (8)" fillcolor=lightblue]
+			5461520656 -> 5461507920
+		5461520656 [label="nodesInNN.21.conv.point.weight
+ (8, 8, 1, 1)" fillcolor=lightblue]
+			5461520720 -> 5461507920
+		5461520720 [label="nodesInNN.21.conv.point.bias
+ (8)" fillcolor=lightblue]
+			5461507984 -> 5461507792
+		5461507984 [label="nodesInNN.21.bn.weight
+ (8)" fillcolor=lightblue]
+			5461508048 -> 5461507792
+		5461508048 [label="nodesInNN.21.bn.bias
+ (8)" fillcolor=lightblue]
+			5461507472 -> 5460999376
+		5461507472 [label=TBackward]
+			5461520464 -> 5461507472
+		5461520464 [label="fc.weight
+ (10, 392)" fillcolor=lightblue]
+}

@@ -22,7 +22,7 @@ def plotUndirected(G):
 	plt.show()
 
 
-def plotDirected(G):
+def plotDirected(G, back=False):
 	'''
 	To plot Directed Graphs 
 	Input : Directed Graph G 
@@ -43,7 +43,28 @@ def plotDirected(G):
 	nx.draw_networkx_nodes(G, pos, node_color= values, cmap=plt.get_cmap('jet'), node_size=500)
 	nx.draw_networkx_edges(G, pos, edgelist= G.edges,edge_color='white', arrows=True)
 	plt.axis('off')
+
+	if back : 
+		return plt 
+
 	plt.show()
+
+
+
+
+import torch
+import torchviz
+#  	Visualization via PyTorch's torchviz 
+# 	Call viz(inputs,model)
+# 	@inputs : sample input (batch,channel,img_x,img_y)
+# 	@model 	: pytorch nn.Module model 
+
+def viz(inputs,model) :
+    x = torch.randn(inputs)
+    y = model(x)
+    f = torchviz.make_dot(y , params = dict(model.named_parameters()))
+    return f
+
 
 
 

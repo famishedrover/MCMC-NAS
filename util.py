@@ -1,3 +1,6 @@
+
+# util.py for some helper graph functions (can be merged with graphGeneration.py)
+
 import networkx as nx
 
 def convertToDAG(G):

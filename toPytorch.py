@@ -19,7 +19,7 @@ import torch.nn.functional as F
 # 3. Create a ModuleList for this new graph copy and write the forward function for pytorch which is essentially 
 # 	traverse the topsort sequentially and any element i requires outputs of parent(i) as input 
 
-
+# ------------------WRITE NETWORKX -> PYTORCH NODE CONVERSION SPECIFIC TO PROBELEM STATEMENT---------------------------
 # Try for ImageNet 
 def giveLayerImageNet(G, node):
 	pass
@@ -82,6 +82,9 @@ def attachLayerDependingUponNode(G, order):
 	return G
 
 
+
+# --------------------------------- SAMPLE RUN-------------------------------------------------------------
+
 # G = getFullArch(3, 300)
 # plotDirected(G)
 
@@ -93,6 +96,10 @@ def attachLayerDependingUponNode(G, order):
 # print G.nodes.data()
 
 
+# ---------------------------------DYNAMIC NEURAL NETWORK GEN FROM NETWORKX GRAPH-----------------------------
+'''
+Main NN module which takes in the attachedLayer networkx Graph and creates the ModuleList Pytorch Network
+'''
 class Net(nn.Module):
     def __init__(self, G):
         super(Net, self).__init__()
@@ -132,11 +139,17 @@ class Net(nn.Module):
 
 
 def testMNIST(Net,G):
+	'''
+	To test whether the created Net is fine (dimension wise) or not on MNIST input dimen
+	'''
 	x = torch.zeros((1,1,28,28))
 	model = Net(G)
 	print model(x).shape
 
 
+
+
+# ---------------------------------RANDOM HIT/MISS CODE-------------------------------------------------------------
 
 # nx.readwrite.nx_yaml.write_yaml(G,"model.yaml")
 # runNetwork(model)
