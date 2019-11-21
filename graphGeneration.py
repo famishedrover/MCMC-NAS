@@ -172,9 +172,48 @@ def singleSwitch(G):
 	return G
 
 
-def uniformGraphGenerator(G, K):
+def uniformGraphGenerator(G=None, K=100, kwargs = {}):
 	# -------------------- MARKOV CHAIN ------------------------
 	# input : G_0 , Output : G_k as one sample , run chain K times
+
+	# print kwargs 
+
+	try : 
+
+		if kwargs['algo'] == 'ER' :
+			# pick some nodes between 1 to 100 
+			numNodes = kwargs['numNodes']
+			prob = kwargs['p']
+			print 'ER options :'
+			print numNodes 
+			print prob 
+
+			G = nx.erdos_renyi_graph(numNodes, prob)
+			return [G]
+
+		elif kwargs['algo'] == 'BA' :
+			numNodes = kwargs['numNodes']
+			m = kwargs['m']
+
+			G = nx.random_graphs.barabasi_albert_graph(numNodes, m)
+			return [G]
+
+		elif kwargs['algo'] == 'WS' :
+			numNodes = kwargs['numNodes']
+			kring = kwargs['kring']
+			p = kwargs['p']
+
+			G = nx.random_graphs.connected_watts_strogatz_graph(numNodes, kring, p, tries=200)
+			return [G]
+
+	except : 
+		pass
+
+
+	if G is None :
+		raise NameError("uniformGraphGenerator expects a valid Graph or call to predefined algorithm")
+
+
 	graphs = []
 
 	for t in range(K):
@@ -214,17 +253,21 @@ def topsort(G):
 
 	# G = nx.relabel.convert_node_labels_to_integers(G_dir)
 
-def getSemiNetworkArch(k,label,inp,outp):	
+def getSemiNetworkArch(k,label,inp,outp,kwargs={}):	
 	# Initialize the graph (Subgraph)
 	# label looks like 1a, 2a, 3a for a is the component 
 	# inp and outp are input and output labels for this subgraph
+	# print kwargs
 
 	G = nx.Graph()
 	G.add_edges_from(
 	    [(1,2),(2,3),(3,4),(4,5)])
 
 	# Run Chain
-	graphs = uniformGraphGenerator(G,k)
+	graphs = uniformGraphGenerator(G,k,kwargs=kwargs)
+
+	# plotUndirected(graphs[-1])
+
 	# Plot final output & some stats
 	# plotUndirected(graphs[-1])	
 	print 'Failed failedAttempts', failedAttemptsSwap
@@ -233,7 +276,7 @@ def getSemiNetworkArch(k,label,inp,outp):
 	# Get DAG & plot
 	print 'Converting to DAG'
 	# G_dir = G.to_directed()
-	G_dir = convertToDAG(G)
+	G_dir = convertToDAG(graphs[-1])
 	# plotDirected(G_dir)
 
 	
@@ -252,10 +295,12 @@ def getSemiNetworkArch(k,label,inp,outp):
 
 
 
-def getFullArch(components=3, k=100):
+def getFullArch(components=3, k=100, kwargs={}):
 	# creates subgraphs as components C1, C2.. and connects them with labels
 	# I is the global graphs's input O is the output 
 	# A,B,C.. are the intermediate connecting points
+
+	# print kwargs
 
 	assert components < 27 , "Support for Max 26 components, else alphabets gets wierd"
 
@@ -263,19 +308,19 @@ def getFullArch(components=3, k=100):
 
 
 	C = []
-	comp = getSemiNetworkArch(k,start.lower(),'In',start)
+	comp = getSemiNetworkArch(k,start.lower(),'In',start, kwargs=kwargs)
 	C.append(comp)
 	# plotDirected(comp)
 
 
 	for ic in range(components-2) :
 		nextStart = chr(ord(start)+1)
-		comp = getSemiNetworkArch(k,nextStart.lower(),start,nextStart )
+		comp = getSemiNetworkArch(k,nextStart.lower(),start,nextStart, kwargs=kwargs)
 		# plotDirected(comp)
 		C.append(comp)
 		start = nextStart
 
-	C.append(getSemiNetworkArch(k,'ou',start,'Ou'))
+	C.append(getSemiNetworkArch(k,'ou',start,'Ou', kwargs=kwargs))
 
 	# C1 = getSemiNetworkArch(k,'a','I','A')
 	# C2 = getSemiNetworkArch(k,'b','A','B')

@@ -144,7 +144,7 @@ def runNetwork(Net,tb,epochs = 10, batch_size = 256, test_batch_size = 256, lr =
 
     # adding tensorboard image grid and other bookkeping 
     tb.add_image('images',grid)
-    tb.add_graph(model,images)
+    # tb.add_graph(model,images)
 
 
 
@@ -157,6 +157,6 @@ def runNetwork(Net,tb,epochs = 10, batch_size = 256, test_batch_size = 256, lr =
         scheduler.step()
 
         # save at each epoch
-        torch.save(model, tb.log_dir+"/model/mnist_"+str(ep)+".pt")
+        torch.save(model, tb.log_dir+"/model/mnist_"+str(epoch)+".pt")
 
 # runNetwork(Net)

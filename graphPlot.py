@@ -1,12 +1,28 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-plt.style.use('dark_background')
+
+
+# to set theme of the plots as dark or light 
+
+def getColorScheme(darkTheme):
+	
+	themecolor = 'white'
+	themecolorEdge = 'black'
+	if darkTheme : 
+		plt.style.use('dark_background')
+		themecolor = 'white'
+		themecolorEdge = 'white'
+
+	return themecolor, themecolorEdge
+
+
+
 
 from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 
 
 
-def plotUndirected(G):
+def plotUndirected(G, **kwargs):
 	'''
 	To plot Undirected Graphs (repeated edges in the edge list is fine)
 	Input : Undirected Graph G 
@@ -14,21 +30,35 @@ def plotUndirected(G):
 	Interface Output : matplotlib plot 
 	'''
 
+	themecolor, themecolorEdge = getColorScheme(darkTheme = False)
+	try : 
+		themecolor, themecolorEdge = getColorScheme(kwargs['darkTheme'])
+	except :
+		 #  Using default scheme 
+		pass
+
 	pos = nx.spring_layout(G)
-	nx.draw_networkx_labels(G, pos)
+	nx.draw_networkx_labels(G, pos, font_color=themecolor)
 	nx.draw_networkx_nodes(G, pos,cmap=plt.get_cmap('jet'), node_size=500)
-	nx.draw_networkx_edges(G, pos, edge_color='white')
+	nx.draw_networkx_edges(G, pos, edge_color=themecolorEdge)
 	plt.axis('off')
 	plt.show()
 
 
-def plotDirected(G, back=False):
+def plotDirected(G, back=False, **kwargs):
 	'''
 	To plot Directed Graphs 
 	Input : Directed Graph G 
 	Output : None 
 	Interface Output : matplotlib plot 
 	'''
+
+	themecolor, themecolorEdge = getColorScheme(darkTheme = False)
+	try : 
+		themecolor, themecolorEdge = getColorScheme(kwargs['darkTheme'])
+	except :
+		 #  Using default scheme - light
+		pass
 
 	# pos = nx.spring_layout(G)
 	pos = graphviz_layout(G, prog='dot')
@@ -39,10 +69,11 @@ def plotDirected(G, back=False):
 
 	values = [ val_map.get(node, 1) for node in G.nodes()]
 
-	nx.draw_networkx_labels(G, pos, font_color='white')
+	nx.draw_networkx_labels(G, pos, font_color=themecolor)
 	nx.draw_networkx_nodes(G, pos, node_color= values, cmap=plt.get_cmap('jet'), node_size=500)
-	nx.draw_networkx_edges(G, pos, edgelist= G.edges,edge_color='white', arrows=True)
+	nx.draw_networkx_edges(G, pos, edgelist= G.edges,edge_color=themecolorEdge, arrows=True)
 	plt.axis('off')
+
 
 	if back : 
 		return plt 
