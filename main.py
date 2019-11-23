@@ -13,8 +13,8 @@ from torchsummary import summary
 
 
 
-components = 3 			#3,4...
-k = 100   				#300,100...
+components = 2			#3,4...
+k = 50 				#300,100...
 epochs = 10    			#10,20...
 batch_size = 256 		
 test_batch_size = 256
@@ -25,14 +25,19 @@ seed=314
 
 
 # Sample Architecture
+G = getFullArch(components = components, k=k)
 # G = getFullArch(components = components, k=k, algo='ER', numNodes = 10, p= 0.6)
 # G = getFullArch(components = components, k=k, algo='BA', numNodes = 10, m= 3)
-G = getFullArch(components = components, k=k, algo='WS', numNodes = 10, kring=4, p= 0.4)
+# G = getFullArch(components = components, k=k, algo='WS', numNodes = 10, kring=4, p= 0.4)
 # Other params 
 # algo = 'ER', numNodes , p <- prob. of edge 
 # algo = 'BA', numNodes, m <- num of edges to attach from new to existing node
 # algo = 'WS', numNodes, kring, p <- kring- k neighbors in ring topology, p is prob of rewiring
 
+
+plotDirected(G)
+
+exit()
 
 # Begin Bookkeeping
 tb = SummaryWriter()
